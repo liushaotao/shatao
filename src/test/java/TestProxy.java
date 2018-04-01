@@ -16,7 +16,11 @@ public class TestProxy {
         ManHandler manhandler = new ManHandler(man);
         Man proxyMan = (Man) Proxy.newProxyInstance(man.getClass().getClassLoader(), new Class[]{Man.class}, manhandler);
         System.out.print(proxyMan.getClass().getName());
-        proxyMan.finObject();
+        try {
+            proxyMan.findObject();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
         testName1(Man.class);
     }
 
